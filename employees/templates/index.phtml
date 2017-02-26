@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Slim 3</title>
+        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+
+        <style>
+            body {
+                margin: 50px 0 0 0;
+                padding: 0;
+                width: 100%;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-align: center;
+                color: #aaa;
+                font-size: 18px;
+            }
+
+            h1 {
+                color: #719e40;
+                letter-spacing: -3px;
+                font-family: 'Lato', sans-serif;
+                font-size: 100px;
+                font-weight: 200;
+                margin-bottom: 0;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+
+
+        <h1>Slim</h1>
+        <table>
+            <tr>
+                <tbody>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Position</th>
+                    <th>Salary</th>
+                    <th>Buscar
+                        <input type="textfield" placeholder="prueba@mail.com" name="buscar">
+                        <input type="button" value="Buscar" name="boton_buscar" >
+                    </th>
+                </tbody>
+            </tr>
+
+                <?php
+                    $content= file_get_contents(__DIR__.'/../employees.json');
+                    $lista_empleados=json_decode($content);
+                    foreach ($lista_empleados as $empleado):
+                ?>
+
+            <tr>
+                <td><?= $empleado->name ;    ?></td>
+                <td><?= $empleado->email;    ?></td>
+                <td><?= $empleado->position; ?></td>
+                <td><?= $empleado->salary;   ?></td>
+            </tr>
+
+<?php endforeach; ?>
+
+
+
+
+
+        </table>
+    </body>
+</html>
